@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 ，一般定义为 包名+文件名 -->
+<mapper namespace="IUserDao">
+
+    <select id="queryUserById" parameterType="java.lang.Integer" resultType="org.lc.mybatis.pojo.User">
+        select * from tb_user where Id = #{id};
+    </select>
+
+    <select id="queryUserAll" resultType="org.lc.mybatis.pojo.User">
+        select * from tb_user;
+    </select>
+
+    <insert id="insertUser" parameterType="org.lc.mybatis.pojo.User">
+        INSERT INTO tb_user (userName,Password,Name,Age,Sex )
+        VALUES(#{userName},#{password},#{name},#{age},#{sex} );
+    </insert>
+    <update id="updateUser" parameterType="org.lc.mybatis.pojo.User">
+        update tb_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName!=null">userName = #{userName},</if>
+            <if test="password!=null">Password = #{password},</if>
+            <if test="name!=null">Name = #{name},</if>
+            <if test="age!=null">Age = #{age},</if>
+            <if test="sex!=null">Sex = #{sex},</if>
+        </trim>
+        WHERE
+        (id = #{id});
+    </update>
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from tb_user where id=#{id}
+    </delete>
+
+</mapper>
