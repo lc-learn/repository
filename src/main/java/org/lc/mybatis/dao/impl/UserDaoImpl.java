@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.List;
 
 /**
+ * 接口实现类
  * @author L丶C
  */
 public class UserDaoImpl implements IUserDao {

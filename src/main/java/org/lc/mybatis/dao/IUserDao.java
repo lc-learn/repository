@@ -17,17 +17,17 @@ public interface IUserDao {
 	 * @param id
 	 * @return
 	 */
-	 User  queryUserById( Integer id);
+	 public User  queryUserById( Integer id);
 
 	/**
-	 * 查询所有用户信息
+	 * 用于查询所有用户信息
 	 *
 	 * @return
 	 */
 	 List<User> queryUserAll();
 
 	/**
-	 * 新增用户
+	 * 用于新增用户
 	 *
 	 * @param user
 	 */
